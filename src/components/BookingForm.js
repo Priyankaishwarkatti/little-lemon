@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../App.css';
 
 function BookingForm({ addBooking }) {
   const [name, setName] = useState('');
@@ -22,6 +23,7 @@ function BookingForm({ addBooking }) {
   };
 
   return (
+    <div class="box">
     <div className="container">
       <h2>Reserve a Table</h2>
       <form onSubmit={handleSubmit}>
@@ -39,6 +41,7 @@ function BookingForm({ addBooking }) {
 
         <button type="submit">Book Now</button>
       </form>
+    </div>
     </div>
   );
 }
