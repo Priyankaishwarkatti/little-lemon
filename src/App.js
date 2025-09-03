@@ -1,21 +1,34 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import BookingPage from "./pages/BookingPage";
-import Nav from "./components/Nav";
-import Footer from "./components/Footer";
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import BookingForm from './components/BookingForm';
+import BookingList from './components/BookingList';
+import './App.css';
+
+function Home() {
+  return (
+    <div className="container">
+      <h1>Welcome to Little Lemon</h1>
+      <p>Your favorite place to book a cozy table!</p>
+    </div>
+  );
+}
 
 function App() {
+  const [bookings, setBookings] = useState([]);
+
+  const addBooking = (newBooking) => {
+    setBookings([...bookings, newBooking]);
+  };
+
   return (
     <Router>
-      <Nav />
-      <main className="container mx-auto p-4">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/booking" element={<BookingPage />} />
-        </Routes>
-      </main>
-      <Footer />
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/bookings" element={<BookingList bookings={bookings} />} />
+        <Route path="/reserve" element={<BookingForm addBooking={addBooking} />} />
+      </Routes>
     </Router>
   );
 }

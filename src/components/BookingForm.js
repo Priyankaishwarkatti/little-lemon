@@ -1,84 +1,45 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-function BookingForm({ availableTimes, submitForm }) {
-  const [date, setDate] = useState("");
-  const [time, setTime] = useState("");
+function BookingForm({ addBooking }) {
+  const [name, setName] = useState('');
+  const [date, setDate] = useState('');
+  const [time, setTime] = useState('');
   const [guests, setGuests] = useState(1);
-  const [occasion, setOccasion] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!date || !time || guests < 1) {
-      alert("Please fill all fields correctly!");
+    if (!name || !date || !time) {
+      alert("Please fill all fields!");
       return;
     }
-    submitForm({ date, time, guests, occasion });
+
+    const newBooking = { id: Date.now(), name, date, time, guests };
+    addBooking(newBooking);
+    setName('');
+    setDate('');
+    setTime('');
+    setGuests(1);
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="max-w-md mx-auto p-6 bg-white shadow-lg rounded-xl space-y-4"
-    >
-      <label className="block">
-        Date:
-        <input
-          type="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-          className="w-full border p-2 rounded"
-          required
-        />
-      </label>
+    <div className="container">
+      <h2>Reserve a Table</h2>
+      <form onSubmit={handleSubmit}>
+        <label>Name:</label>
+        <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
 
-      <label className="block">
-        Time:
-        <select
-          value={time}
-          onChange={(e) => setTime(e.target.value)}
-          className="w-full border p-2 rounded"
-          required
-        >
-          <option value="">Select Time</option>
-          {availableTimes.map((t) => (
-            <option key={t}>{t}</option>
-          ))}
-        </select>
-      </label>
+        <label>Date:</label>
+        <input type="date" value={date} onChange={(e) => setDate(e.target.value)} required />
 
-      <label className="block">
-        Number of guests:
-        <input
-          type="number"
-          min="1"
-          max="10"
-          value={guests}
-          onChange={(e) => setGuests(e.target.value)}
-          className="w-full border p-2 rounded"
-          required
-        />
-      </label>
+        <label>Time:</label>
+        <input type="time" value={time} onChange={(e) => setTime(e.target.value)} required />
 
-      <label className="block">
-        Occasion:
-        <select
-          value={occasion}
-          onChange={(e) => setOccasion(e.target.value)}
-          className="w-full border p-2 rounded"
-        >
-          <option value="">Select Occasion</option>
-          <option>Birthday</option>
-          <option>Anniversary</option>
-        </select>
-      </label>
+        <label>Guests:</label>
+        <input type="number" min="1" value={guests} onChange={(e) => setGuests(e.target.value)} required />
 
-      <button
-        type="submit"
-        className="w-full bg-green-600 text-white py-2 rounded-lg"
-      >
-        Book Now
-      </button>
-    </form>
+        <button type="submit">Book Now</button>
+      </form>
+    </div>
   );
 }
 
