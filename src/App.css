@@ -56,8 +56,12 @@ nav ul li a:hover {
 }
 
 /* Headings */
-h1, h2, h3 {
+ h2, h3 {
   color: #495e57;
+}
+
+h1 {
+  color: #f4ce14;
 }
 
 /* Form styling */
