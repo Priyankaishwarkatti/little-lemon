@@ -5,7 +5,7 @@ function BookingList({ bookings }) {
     <div className="booking-list">
       <h2>Current Bookings</h2>
       {bookings.length === 0 ? (
-        <p>No bookings yet!</p>
+        <p>No bookings yet!!</p>
       ) : (
         bookings.map((booking) => (
           <div className="booking-item" key={booking.id}>
