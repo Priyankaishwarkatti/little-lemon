@@ -39,7 +39,7 @@ function BookingForm({ addBooking }) {
         <label>Guests:</label>
         <input type="number" min="1" value={guests} onChange={(e) => setGuests(e.target.value)} required />
 
-        <button type="submit">Book Now</button>
+        <button type="submit">Book Table</button>
       </form>
     </div>
     </div>
