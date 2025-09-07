@@ -28,7 +28,7 @@ function BookingForm({ addBooking }) {
       <h2>Reserve a Table</h2>
       <form onSubmit={handleSubmit}>
         <label>Name:</label>
-        <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
+        <input type="text" placeholder='Please Enter Your Name' value={name} onChange={(e) => setName(e.target.value)} required />
 
         <label>Date:</label>
         <input type="date" value={date} onChange={(e) => setDate(e.target.value)} required />
