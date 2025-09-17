@@ -142,7 +142,7 @@ form button:hover {
 
 .hero-text:hover {
   max-width: 620px;  
-  /* transition: 1.5 ease; */
+  transition: 1.5 ease;
 }
 
 .hero-text h1 {
