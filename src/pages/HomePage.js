@@ -23,7 +23,7 @@ function HomePage() {
       </div>
 
       {/* Title and Description */}
-      <h2 className="text-4xl font-bold text-green-700">Welcome to Little Lemon</h2>
+      <h2 className="text-4xl font-bold text-green-800">Welcome to Little Lemon</h2>
       <p className="mt-4 text-lg text-gray-700 max-w-xl mx-auto">
         Reserve your table easily and enjoy our freshly prepared dishes, made with love
         and locally sourced ingredients.
